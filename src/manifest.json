@@ -1,13 +1,14 @@
 {
   "manifest_version": 3,
-  "name": "Chrome Extension with React & Webpack",
-  "description": "A chrome extension boilerplate built with React 17, Webpack 5, and Webpack Dev Server 4",
+  "name": "duolingo-replace",
+  "description": "A chrome extension that replaces the simplified Chinese characters with traditional Chinese characters.",
   "options_page": "options.html",
   "background": { "service_worker": "background.bundle.js" },
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icon-34.png"
   },
+  "permissions": ["tabs", "activeTab", "scripting"],
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   },

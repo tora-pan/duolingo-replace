@@ -8,6 +8,7 @@ var webpack = require('webpack'),
 var { CleanWebpackPlugin } = require('clean-webpack-plugin');
 var ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 var ReactRefreshTypeScript = require('react-refresh-typescript');
+const nodeExternals = require('webpack-node-externals');
 
 const ASSET_PATH = process.env.ASSET_PATH || '/';
 
@@ -49,6 +50,7 @@ var options = {
   chromeExtensionBoilerplate: {
     notHotReload: ['background', 'contentScript', 'devtools'],
   },
+  // externals: [nodeExternals()],
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'build'),
@@ -131,6 +133,18 @@ var options = {
     extensions: fileExtensions
       .map((extension) => '.' + extension)
       .concat(['.js', '.jsx', '.ts', '.tsx', '.css']),
+    // fallback: {
+    //   // child_process: false,
+    //   crypto: require.resolve('crypto-browserify'),
+    //   https: require.resolve('https-browserify'),
+    //   http: require.resolve('stream-http'),
+    //   stream: require.resolve('stream-browserify'),
+    //   zlib: require.resolve('browserify-zlib'),
+    //   path: require.resolve('path-browserify'),
+    //   os: require.resolve('os-browserify/browser'),
+    //   fs: false,
+    //   buffer: false,
+    // },
   },
   plugins: [
     isDevelopment && new ReactRefreshWebpackPlugin(),
